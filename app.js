@@ -4,7 +4,7 @@ const outputText = document.querySelector(".result");
 
 reverseBtn.addEventListener("click", readValue);
 
-function readValue( ) {
+function readValue() {
     const inputText = inputString.value;
     outputText.innerText = inputText;
 }
@@ -14,33 +14,34 @@ const dateEntered = {
     month: 8,
     year: 2022
 };
-const usersDate = convertDate(dateEntered);
-const formatDates = formatDate(usersDate);
-const pallindromeAnswer = checkPalindrome(formatDates);
-console.log(pallindromeAnswer);
 
-function reverseString(OGText) {
-    
-    const reversedText = OGText.split("").reverse().join("");
+console.log(checkPalindromeForAllFormats(dateEntered));
+
+function reverseString(textReceived) {
+    const reversedText = textReceived.split("").reverse().join("");
     return reversedText;
 }
 
-function checkPalindrome(datesArrayReceived) {
-    const pallindromeArray = [];
-    for (currentFormat of datesArrayReceived) {
-        const reversedFormat = reverseString(currentFormat);
-    
-        if(reversedFormat === currentFormat){
-            pallindromeArray.push(true);
-        }
-        else{
-            pallindromeArray.push(false);
-        }
-    }
-    return pallindromeArray
+function isPalindrome(textReceived) {
+    const reversedText = reverseString(textReceived);
+    return (reversedText === textReceived);
 }
 
-function convertDate(dateReceived) {
+function checkPalindromeForAllFormats(dateEnteredByUser) {
+    const usersDate = convertDateToString(dateEnteredByUser);
+    const datesFormatReceived = formatDate(usersDate);
+
+    let resultPalindrome = false;
+    for (let currentFormat of datesFormatReceived) {
+        if (isPalindrome(currentFormat)){
+            resultPalindrome = true;
+            break;
+        }
+    }
+    return resultPalindrome;
+}
+
+function convertDateToString(dateReceived) {
     let stringDate = {
         day: "",
         month: "",
@@ -58,12 +59,8 @@ function convertDate(dateReceived) {
     } else {
         stringDate.month = String(dateReceived.month);
     }
+    stringDate.year = String(dateReceived.year);
 
-    if (dateReceived.year < 10) {
-        stringDate.year = "0" + dateReceived.year;
-    } else {
-        stringDate.year = String(dateReceived.year);
-    }
     return stringDate;
 }
 
