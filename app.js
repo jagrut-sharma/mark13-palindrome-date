@@ -17,15 +17,27 @@ const dateEntered = {
 const usersDate = convertDate(dateEntered);
 const formatDates = formatDate(usersDate);
 const pallindromeAnswer = checkPalindrome(formatDates);
+console.log(pallindromeAnswer);
 
-function reverseString() {
+function reverseString(OGText) {
     
-    const reversedText = inputText.split("").reverse().join("");
+    const reversedText = OGText.split("").reverse().join("");
     return reversedText;
 }
 
 function checkPalindrome(datesArrayReceived) {
+    const pallindromeArray = [];
+    for (currentFormat of datesArrayReceived) {
+        const reversedFormat = reverseString(currentFormat);
     
+        if(reversedFormat === currentFormat){
+            pallindromeArray.push(true);
+        }
+        else{
+            pallindromeArray.push(false);
+        }
+    }
+    return pallindromeArray
 }
 
 function convertDate(dateReceived) {
