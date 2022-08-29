@@ -14,39 +14,35 @@ function readValue() {
         month: Number(dateArray[1]),
         year: Number(dateArray[0]),
     };
-    if (checkValues())
-    {
-        if (checkPalindromeForAllFormats(dateEntered)){
+    if (checkValues()) {
+        if (checkPalindromeForAllFormats(dateEntered)) {
             outputText.innerText = "🎉Congrats, your Birthday is Palindrome🎉";
             outputText.style.color = "green";
-        }
-        else{
+        } else {
             const nextData = getNextPalindromeDate(dateEntered);
             const prevData = getPrevPalindromeDate(dateEntered);
             nearestDateResult(nextData, prevData);
         }
-    }
-    else{
+    } else {
         outputText.innerText = "Please Select a date";
         outputText.style.color = "red";
     }
 }
 
-function checkValues(){
-    if (dateEntered.year === 0){
+function checkValues() {
+    if (dateEntered.year === 0) {
         return false;
     }
     return true;
 }
 
-function nearestDateResult(next, previous){
+function nearestDateResult(next, previous) {
     const monthName = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
     outputText.style.color = "blue";
-    if (next[0] < previous[0]){
-        outputText.innerText = "The nearest palindrome date is: " + next[1].day + " " + monthName[next[1].month-1] + ", " + next[1].year + ". " + "You missed by " + next[0] + " days.";
-    }
-    else{
-        outputText.innerText = "The nearest palindrome date is: " + previous[1].day + " " + monthName[previous[1].month-1] + ", " + previous[1].year + ". " + "You missed by " + previous[0] + " days.";
+    if (next[0] < previous[0]) {
+        outputText.innerText = "The nearest palindrome date is: " + next[1].day + " " + monthName[next[1].month - 1] + ", " + next[1].year + ". " + "You missed by " + next[0] + " days.";
+    } else {
+        outputText.innerText = "The nearest palindrome date is: " + previous[1].day + " " + monthName[previous[1].month - 1] + ", " + previous[1].year + ". " + "You missed by " + previous[0] + " days.";
     }
 }
 
