@@ -4,4 +4,73 @@
 
 body{
     margin: 0;
+    text-align: center;
+    background-color: #e2e8f0;
+}
+
+.container{
+    max-width: 50%;
+    margin: 3rem auto auto;
+}
+
+h1{
+    color: white;
+    background-color: #059669;
+    margin: 0;
+    padding: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+p{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 1rem;
+    font-size: 1.05rem;
+}
+
+.para{
+    margin-bottom: 2rem;
+}
+
+label{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.input-date{
+    display: block;
+    text-align: center;
+    margin: 1rem auto;
+    width: 10rem;
+    padding: 0.5rem;
+    border: 3px solid #15803d;
+    border-radius: 0.5rem;
+}
+
+.btn{
+    padding: 0.6rem 0.8rem;
+    border: 2px solid black;
+    background-color: #4ade80;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+}
+
+.footer .img-footer{
+    width: 32px;
+    height: 32px;
+    margin: 1rem;
+}
+
+.footer{
+    background-color: #059669;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
 }
