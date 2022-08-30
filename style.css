@@ -9,8 +9,8 @@ body{
 }
 
 .container{
-    max-width: 50%;
-    margin: 3rem auto auto;
+    max-width: 70%;
+    margin: 2rem auto auto;
 }
 
 h1{
@@ -56,6 +56,25 @@ label{
     background-color: #4ade80;
     border-radius: 0.8rem;
     font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 300ms, color 300ms, font-weight 300ms;
+}
+
+.btn:hover{
+    background-color: #059669;
+    color: white;
+    font-weight: bold;
+}
+
+.img-container{
+    margin: auto;
+    width: 100%;
+}
+
+.img-loading{
+    width: 10rem;
+    margin: 2rem auto;
+    display: none;
 }
 
 .footer .img-footer{

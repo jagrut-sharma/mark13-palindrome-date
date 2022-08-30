@@ -1,6 +1,7 @@
 const inputDate = document.querySelector(".input-date");
 const checkBtn = document.querySelector(".btn");
 const outputText = document.querySelector(".result");
+const loadingImage = document.querySelector(".img-loading");
 
 checkBtn.addEventListener("click", readValue);
 
@@ -14,19 +15,25 @@ function readValue() {
         month: Number(dateArray[1]),
         year: Number(dateArray[0]),
     };
-    if (checkValues()) {
-        if (checkPalindromeForAllFormats(dateEntered)) {
-            outputText.innerText = "🎉Congrats, your Birthday is Palindrome🎉";
-            outputText.style.color = "green";
+    loadingImage.style.display = "inline";
+    outputText.innerText = "";
+    setTimeout(function () {
+
+        loadingImage.style.display = "none";
+        if (checkValues()) {
+            if (checkPalindromeForAllFormats(dateEntered)) {
+                outputText.innerText = "🎉Congrats, your Birthday is Palindrome🎉";
+                outputText.style.color = "green";
+            } else {
+                const nextData = getNextPalindromeDate(dateEntered);
+                const prevData = getPrevPalindromeDate(dateEntered);
+                nearestDateResult(nextData, prevData);
+            }
         } else {
-            const nextData = getNextPalindromeDate(dateEntered);
-            const prevData = getPrevPalindromeDate(dateEntered);
-            nearestDateResult(nextData, prevData);
+            outputText.innerText = "Please Select a date";
+            outputText.style.color = "red";
         }
-    } else {
-        outputText.innerText = "Please Select a date";
-        outputText.style.color = "red";
-    }
+    }, 4000);
 }
 
 function checkValues() {
@@ -40,9 +47,17 @@ function nearestDateResult(next, previous) {
     const monthName = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
     outputText.style.color = "#713f12";
     if (next[0] < previous[0]) {
-        outputText.innerText = "The nearest palindrome date is: " + next[1].day + " " + monthName[next[1].month - 1] + ", " + next[1].year + ". " + "You missed by " + next[0] + " days.";
+        if (next[0] === 1) {
+            outputText.innerText = "The nearest palindrome date is: " + next[1].day + " " + monthName[next[1].month - 1] + ", " + next[1].year + ". " + "You missed it by " + next[0] + " day.";
+        } else {
+            outputText.innerText = "The nearest palindrome date is: " + next[1].day + " " + monthName[next[1].month - 1] + ", " + next[1].year + ". " + "You missed it by " + next[0] + " days.";
+        }
     } else {
-        outputText.innerText = "The nearest palindrome date is: " + previous[1].day + " " + monthName[previous[1].month - 1] + ", " + previous[1].year + ". " + "You missed by " + previous[0] + " days.";
+        if (previous[0] === 1) {
+            outputText.innerText = "The nearest palindrome date is: " + previous[1].day + " " + monthName[previous[1].month - 1] + ", " + previous[1].year + ". " + "You missed it by " + previous[0] + " day.";
+        } else {
+            outputText.innerText = "The nearest palindrome date is: " + previous[1].day + " " + monthName[previous[1].month - 1] + ", " + previous[1].year + ". " + "You missed it by " + previous[0] + " days.";
+        }
     }
 }
 
