@@ -46,8 +46,11 @@ label{
     margin: 1rem auto;
     width: 10rem;
     padding: 0.5rem;
-    border: 3px solid #15803d;
     border-radius: 0.5rem;
+}
+
+.input-date:focus{
+    border: 3px solid #15803d;
 }
 
 .btn{
