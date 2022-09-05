@@ -5,10 +5,15 @@
     font-family: 'Bitter', serif;
 }
 
+:root{
+    --primary-color: #059669;
+    --background-color: #e2e8f0;
+}
+
 body{
     margin: 0;
     text-align: center;
-    background-color: #e2e8f0;
+    background-color: var(--background-color);
 }
 
 .container{
@@ -18,7 +23,7 @@ body{
 
 h1{
     color: white;
-    background-color: #059669;
+    background-color: var(--primary-color);
     margin: 0;
     padding: 1rem;
     border-bottom-left-radius: 1rem;
@@ -53,7 +58,7 @@ label{
 }
 
 .input-date:focus{
-    border: 3px solid #15803d;
+    border: 3px solid var(--primary-color);
 }
 
 .btn{
@@ -63,11 +68,11 @@ label{
     border-radius: 0.8rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 300ms, color 300ms, font-weight 300ms;
+    transition: background-color 200ms, color 200ms, font-weight 200ms;
 }
 
 .btn:hover{
-    background-color: #059669;
+    background-color: var(--primary-color);
     color: white;
     font-weight: bold;
 }
@@ -87,10 +92,11 @@ label{
     width: 32px;
     height: 32px;
     margin: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .footer{
-    background-color: #059669;
+    background-color: var(--primary-color);
     padding: 0.5rem;
     position: absolute;
     bottom: 0;
